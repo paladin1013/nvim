@@ -1,4 +1,23 @@
+if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+if empty(glob($HOME.'/.config/nvim/plugged/wildfire.vim/autoload/wildfire.vim'))
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+
+
+
+
+
+
+
 set nocompatible
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -75,7 +94,7 @@ noremap <C-u> <C-u>zz
 map <LEADER>sc :set spell!<CR>
 
 
-call plug#begin()
+call plug#begin('$HOME/.config/nvim/plugged')
 
 
 Plug 'vim-airline/vim-airline'
