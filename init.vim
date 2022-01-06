@@ -38,8 +38,8 @@ set laststatus=2
 set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-
-
+set clipboard=unnamedplus
+vnoremap Y "+y
 
 let mapleader=" "
 syntax on " highlight syntax
@@ -89,8 +89,8 @@ map R :w<CR> :source $MYVIMRC<CR>
 "noremap u <C-u>zz
 "noremap <C-u> u
 "noremap <C-d> d
-noremap <C-d> <C-d>zz
-noremap <C-u> <C-u>zz
+noremap <C-d> 10<C-d>zz
+noremap <C-u> 10<C-u>zz
 map <LEADER>sc :set spell!<CR>
 
 
@@ -152,14 +152,25 @@ Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
 
+" File navigation
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'kana/vim-textobj-user'
 Plug 'fadein/vim-FIGlet'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-
+Plug 'junegunn/vim-peekaboo'
+" Git
+Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+"Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
+Plug 'kdheepak/lazygit.nvim'
 call plug#end()
 
 color snazzy
@@ -210,3 +221,88 @@ let g:multi_cursor_next_key            = '<c-k>'
 let g:multi_cursor_prev_key            = '<c-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+" ===
+" === coc.nvim
+" ===
+let g:coc_global_extensions = [
+	\ 'coc-css',
+	\ 'coc-diagnostic',
+	\ 'coc-docker',
+	\ 'coc-eslint',
+	\ 'coc-explorer',
+	\ 'coc-flutter-tools',
+	\ 'coc-gitignore',
+	\ 'coc-html',
+	\ 'coc-import-cost',
+	\ 'coc-java',
+	\ 'coc-jest',
+	\ 'coc-json',
+	\ 'coc-lists',
+	\ 'coc-omnisharp',
+	\ 'coc-prettier',
+	\ 'coc-prisma',
+	\ 'coc-pyright',
+	\ 'coc-snippets',
+	\ 'coc-sourcekit',
+	\ 'coc-stylelint',
+	\ 'coc-syntax',
+	\ 'coc-tailwindcss',
+	\ 'coc-tasks',
+	\ 'coc-translator',
+	\ 'coc-tsserver',
+	\ 'coc-vetur',
+	\ 'coc-vimlsp',
+	\ 'coc-yaml',
+	\ 'coc-yank',
+	\ 'https://github.com/rodrigore/coc-tailwind-intellisense']
+
+
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
