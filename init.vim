@@ -63,13 +63,25 @@ set relativenumber
 set smartcase
 map s <nop>
 nmap <LEADER>p :pu<CR> 
+"function! MySplit( fname )
+    "let bufnum=bufnr(expand(a:fname))
+    "let winnum=bufwinnr(bufnum)
+    "if winnum != -1
+        "" Jump to existing split
+        "exe winnum . "wincmd w"
+    "else
+        "" Make new split as usual
+        "exe "split " . a:fname
+    "endif
+"endfunction
+"command! -nargs=1 Split :call MySplit("<args>")
+"cabbrev split Split
 map sl :set splitright<CR>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
 map sj :set splitbelow<CR>:split<CR>
 map sk :set nosplitbelow<CR>:split<CR>
 map sv <C-w>t<C-w>H
 map sc <C-w>t<C-w>K
-
 
 map <LEADER>l <C-w>l
 map <LEADER>h <C-w>h
@@ -112,7 +124,7 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'w0rp/ale'
 
 " Auto Complete
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
 " Undo Tree
 "Plug 'mbbill/undotree/'
@@ -123,9 +135,9 @@ Plug 'Valloric/YouCompleteMe'
 
 " Git
 Plug 'rhysd/conflict-marker.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+"Plug 'tpope/vim-fugitive'
+"Plug 'mhinz/vim-signify'
+"Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 "Plug 'elzr/vim-json'
@@ -136,7 +148,7 @@ Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'mattn/emmet-vim'
 
 " Python
-Plug 'vim-scripts/indentpython.vim'
+"Plug 'vim-scripts/indentpython.vim'
 
 
 " Bookmarks
@@ -145,13 +157,15 @@ Plug 'vim-scripts/indentpython.vim'
 " Other useful utilities
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
+"Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-
+"Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'tpope/vim-commentary'
 " File navigation
-"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"Plug 'Xuyuanp/nerdtree-git-plugin'
+
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
@@ -169,12 +183,15 @@ Plug 'junegunn/vim-peekaboo'
 "Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
-Plug 'cohama/agit.vim'
+"Plug 'airblade/vim-gitgutter'
+"Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'mg979/vim-visual-multi'
 Plug 'AndrewRadev/switch.vim'
 
+
+
+Plug 'glacambre/firenvim'
 call plug#end()
 
 
@@ -263,13 +280,13 @@ let g:coc_global_extensions = [
 
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-noremap \g :Git
+"noremap \g :Git
 "noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 noremap <c-g> :LazyGit<CR>
 nnoremap R :RnvimrToggle<CR>
-
+nnoremap ya :%y+<CR>
 " Make Ranger replace Netrw and be the file explorer
-"let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_ex = 1
 
 " Make Ranger to be hidden after picking a file
 let g:rnvimr_enable_picker = 1
@@ -281,10 +298,10 @@ let g:rnvimr_action = {
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }
-"let g:coc_global_presets = {
-"'icon.enableNerdfont': v:true,
-  "}
+let g:coc_global_presets = {
+      \ 'icon.enableNerdfont': v:true,
+      \ }
 
-
+nmap <C-f> :Telescope find_files<CR>
 nmap ff :CocCommand explorer<CR>
 map <LEADER>sw :Switch<CR>
