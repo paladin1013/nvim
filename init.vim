@@ -135,17 +135,16 @@ Plug 'w0rp/ale'
 
 " Git
 Plug 'rhysd/conflict-marker.vim'
-"Plug 'tpope/vim-fugitive'
-"Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 "Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-
-" HTML, CSS, JavaScript, PHP, JSON, etc.
-"Plug 'elzr/vim-json'
-"Plug 'hail2u/vim-css3-syntax'
-"Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
-"Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-"Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-"Plug 'mattn/emmet-vim'
+"Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+"Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'mg979/vim-visual-multi'
+Plug 'AndrewRadev/switch.vim'
 
 " Python
 "Plug 'vim-scripts/indentpython.vim'
@@ -179,15 +178,7 @@ Plug 'kevinhwang91/rnvimr'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/vim-peekaboo'
-" Git
-"Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-"Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-"Plug 'mhinz/vim-signify'
-"Plug 'airblade/vim-gitgutter'
-"Plug 'cohama/agit.vim'
-Plug 'kdheepak/lazygit.nvim'
-Plug 'mg979/vim-visual-multi'
-Plug 'AndrewRadev/switch.vim'
+
 
 
 
