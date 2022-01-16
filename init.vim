@@ -103,8 +103,8 @@ map <LEADER>R :w<CR> :source $MYVIMRC<CR>
 "noremap u <C-u>zz
 "noremap <C-u> u
 "noremap <C-d> d
-noremap <C-d> 10<C-d>zz
-noremap <C-u> 10<C-u>zz
+noremap <C-d> 15jzz
+noremap <C-u> 15kzz
 map <LEADER>sc :set spell!<CR>
 
 
