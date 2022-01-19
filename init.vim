@@ -35,7 +35,7 @@ set backspace=indent,eol,start
 set foldmethod=indent
 set foldlevel=99
 set laststatus=2
-set autochdir
+" set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 set mouse=a
 
@@ -106,7 +106,8 @@ map <LEADER>R :w<CR> :source $MYVIMRC<CR>
 noremap <C-d> 10<C-d>zz
 noremap <C-u> 10<C-u>zz
 map <LEADER>sc :set spell!<CR>
-
+map [b :bp<CR>
+map ]b :bn<CR>
 
 call plug#begin('$HOME/.config/nvim/plugged')
 
@@ -116,6 +117,7 @@ Plug 'connorholyday/vim-snazzy'
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Chiel92/vim-autoformat'
 
 " Taglist
 "Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
@@ -140,7 +142,7 @@ Plug 'mhinz/vim-signify'
 "Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'mg979/vim-visual-multi'
@@ -266,13 +268,13 @@ let g:coc_global_extensions = [
 	\ 'coc-vetur',
 	\ 'coc-vimlsp',
 	\ 'coc-yaml',
-	\ 'coc-yank',
-	\ 'https://github.com/rodrigore/coc-tailwind-intellisense']
+	\ 'coc-yank']
 
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 "noremap \g :Git
 "noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+noremap <c-t> :set splitbelow<CR>:split<CR>:res 10<CR>:term<CR>i
 noremap <c-g> :LazyGit<CR>
 nnoremap R :RnvimrToggle<CR>
 nnoremap ya :%y+<CR>
@@ -292,7 +294,11 @@ let g:rnvimr_action = {
 let g:coc_global_presets = {
       \ 'icon.enableNerdfont': v:true,
       \ }
-
+let g:python3_host_prog="/home/yhgao/anaconda3/bin/python"
+let g:formatterpath = ['/home/yhgao/anaconda3/bin', '/usr/bin']
 nmap <C-f> :Telescope find_files<CR>
 nmap ff :CocCommand explorer<CR>
 map <LEADER>sw :Switch<CR>
+
+nmap <silent><leader><leader>c :e $HOME/C920/readme.md<CR>:CocCommand explorer<CR>
+source $HOME/.config/nvim/plug-config/coc.vim
