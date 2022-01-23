@@ -302,3 +302,4 @@ map <LEADER>sw :Switch<CR>
 
 nmap <silent><leader><leader>c :e $HOME/C920/readme.md<CR>:CocCommand explorer<CR>
 source $HOME/.config/nvim/plug-config/coc.vim
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
