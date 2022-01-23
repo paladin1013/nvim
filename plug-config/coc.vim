@@ -169,3 +169,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+nmap <F2> <Plug>(coc-rename)

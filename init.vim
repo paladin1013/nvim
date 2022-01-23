@@ -38,7 +38,7 @@ set laststatus=2
 " set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 set mouse=a
-
+set hidden
 set clipboard=unnamedplus
 vnoremap Y "+y
 
@@ -302,3 +302,4 @@ map <LEADER>sw :Switch<CR>
 
 nmap <silent><leader><leader>c :e $HOME/C920/readme.md<CR>:CocCommand explorer<CR>
 source $HOME/.config/nvim/plug-config/coc.vim
+
