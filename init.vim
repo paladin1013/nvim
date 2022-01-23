@@ -99,12 +99,12 @@ map tl :+tabnext<CR>
 map <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 map <LEADER>zsh :e ~/.zshrc<CR>
 map <LEADER>R :w<CR> :source $MYVIMRC<CR>
-"noremap d <C-d>zz
-"noremap u <C-u>zz
+noremap d <C-d>zz
+noremap u <C-u>zz
 "noremap <C-u> u
 "noremap <C-d> d
-noremap <C-d> 15jzz
-noremap <C-u> 15kzz
+" noremap <C-d> 15jzz
+" noremap <C-u> 15kzz
 map <LEADER>sc :set spell!<CR>
 map [b :bp<CR>
 map ]b :bn<CR>
@@ -292,10 +292,8 @@ let g:rnvimr_action = {
             \ 'yw': 'EmitRangerCwd'
             \ }
 let g:coc_global_presets = {
-      \ 'icon.enableNerdfont': v:true,
+      \ 'icon.enableNerdfont': v:true
       \ }
-let g:python3_host_prog="/home/yhgao/anaconda3/bin/python"
-let g:formatterpath = ['/home/yhgao/anaconda3/bin', '/usr/bin']
 nmap <C-f> :Telescope find_files<CR>
 nmap ff :CocCommand explorer<CR>
 map <LEADER>sw :Switch<CR>
@@ -303,3 +301,4 @@ map <LEADER>sw :Switch<CR>
 nmap <silent><leader><leader>c :e $HOME/C920/readme.md<CR>:CocCommand explorer<CR>
 source $HOME/.config/nvim/plug-config/coc.vim
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+source $HOME/.config/nvim/device-related.vim
