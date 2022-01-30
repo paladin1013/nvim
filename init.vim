@@ -87,11 +87,12 @@ map <LEADER>l <C-w>l
 map <LEADER>h <C-w>h
 map <LEADER>j <C-w>j
 map <LEADER>k <C-w>k
-
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize +5<CR>
-map <right> :vertical resize -5<CR>
+imap <c-e> <esc>A
+imap <c-a> <esc>I
+" map <up> :res +5<CR>
+" map <down> :res -5<CR>
+" map <left> :vertical resize +5<CR>
+" map <right> :vertical resize -5<CR>
 
 map tn :tabe<CR>
 map th :-tabnext<CR> 
@@ -99,12 +100,12 @@ map tl :+tabnext<CR>
 map <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 map <LEADER>zsh :e ~/.zshrc<CR>
 map <LEADER>R :w<CR> :source $MYVIMRC<CR>
-noremap d <C-d>zz
-noremap u <C-u>zz
+" noremap d <C-d>zz
+" noremap u <C-u>zz
 "noremap <C-u> u
 "noremap <C-d> d
-" noremap <C-d> 15jzz
-" noremap <C-u> 15kzz
+noremap <C-d> 15<C-d>zz
+noremap <C-u> 15<C-u>zz
 map <LEADER>sc :set spell!<CR>
 map [b :bp<CR>
 map ]b :bn<CR>
@@ -239,36 +240,6 @@ let g:multi_cursor_use_default_mapping=1
 " ===
 " === coc.nvim
 " ===
-let g:coc_global_extensions = [
-	\ 'coc-css',
-	\ 'coc-diagnostic',
-	\ 'coc-docker',
-	\ 'coc-eslint',
-	\ 'coc-explorer',
-	\ 'coc-flutter-tools',
-	\ 'coc-gitignore',
-	\ 'coc-html',
-	\ 'coc-import-cost',
-	\ 'coc-java',
-	\ 'coc-jest',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-omnisharp',
-	\ 'coc-prettier',
-	\ 'coc-prisma',
-	\ 'coc-pyright',
-	\ 'coc-snippets',
-	\ 'coc-sourcekit',
-	\ 'coc-stylelint',
-	\ 'coc-syntax',
-	\ 'coc-tailwindcss',
-	\ 'coc-tasks',
-	\ 'coc-translator',
-	\ 'coc-tsserver',
-	\ 'coc-vetur',
-	\ 'coc-vimlsp',
-	\ 'coc-yaml',
-	\ 'coc-yank']
 
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
@@ -276,8 +247,11 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 "noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 noremap <c-t> :set splitbelow<CR>:split<CR>:res 10<CR>:term<CR>i
 noremap <c-g> :LazyGit<CR>
+noremap <silent> <leader>m :verbose map 
+" noremap <silent> <leader>im :verbose imap 
+" noremap <silent> <leader>vm :verbose vmap 
 nnoremap R :RnvimrToggle<CR>
-nnoremap ya :%y+<CR>
+nnoremap yall :%y+<CR>
 " Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_enable_ex = 1
 
