@@ -172,6 +172,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'kevinhwang91/rnvimr'
+Plug 'honza/vim-snippets'
 "Plug 'airblade/vim-rooter'
 "Plug 'pechorin/any-jump.vim'
 " Dependencies
