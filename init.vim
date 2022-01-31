@@ -51,6 +51,8 @@ noremap <LEADER><CR> :nohlsearch<CR>
 set ignorecase " ignore case in search
 set incsearch " show search results as you type
 inoremap jk <ESC>
+inoremap :w <ESC>:w
+inoremap :q <ESC>:q
 nnoremap <C-c> "*y
 vnoremap <C-c> "*y
 set cursorline
@@ -143,7 +145,7 @@ Plug 'mhinz/vim-signify'
 "Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'mg979/vim-visual-multi'
@@ -170,27 +172,31 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'honza/vim-snippets'
+Plug 'vim-python/python-syntax'
 "Plug 'airblade/vim-rooter'
 "Plug 'pechorin/any-jump.vim'
 " Dependencies
 "Plug 'MarcWeber/vim-addon-mw-utils'
 "Plug 'kana/vim-textobj-user'
 "Plug 'fadein/vim-FIGlet'
-
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/vim-peekaboo'
-
+Plug 'morhetz/gruvbox'
 
 
 
 Plug 'glacambre/firenvim'
+Plug 'akinsho/toggleterm.nvim'
+
 call plug#end()
 
-
 color snazzy
+colorscheme gruvbox
+highlight! link SignColumn LineNr
 "let g:SnazzyTransparent = 1
 
 
@@ -246,9 +252,9 @@ let g:multi_cursor_use_default_mapping=1
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 "noremap \g :Git
 "noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
-noremap <c-t> :set splitbelow<CR>:split<CR>:res 10<CR>:term<CR>i
+" noremap <c-t> :set splitbelow<CR>:split<CR>:res 10<CR>:term<CR>i
 noremap <c-g> :LazyGit<CR>
-noremap <silent> <leader>m :verbose map 
+" noremap <silent> <leader>m :verbose map 
 " noremap <silent> <leader>im :verbose imap 
 " noremap <silent> <leader>vm :verbose vmap 
 nnoremap R :RnvimrToggle<CR>
@@ -269,10 +275,50 @@ let g:rnvimr_action = {
 let g:coc_global_presets = {
       \ 'icon.enableNerdfont': v:true
       \ }
-nmap <C-f> :Telescope find_files<CR>
+" nmap <C-f> :Telescope find_files<CR>
 nmap ff :CocCommand explorer<CR>
 map <LEADER>sw :Switch<CR>
 
 nmap <silent><leader><leader>c :e $HOME/C920/readme.md<CR>:CocCommand explorer<CR>
 source $HOME/.config/nvim/plug-config/coc.vim
 
+let g:coc_snippets_next = '<c-n>'
+let g:coc_snippets_prev = '<c-p>'
+imap <c-j> <Plug>(coc-snippets-expand-jump)
+
+
+
+"     LeaderF
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+let g:Lf_ShortcutF = "<C-f>"
+let g:Lf_CommandMap = {'<C-J>':['<C-N>'],'<C-K>':['<C-P>']}
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+
+
+let g:python_highlight_all = 1
+" set
+let g:toggleterm_terminal_mapping = '<C-t>'
+" or manually...
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
